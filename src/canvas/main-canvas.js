@@ -15,8 +15,9 @@ const nodeTypes = {
 const onInit = (reactFlowInstance) => console.log('flow loaded:', reactFlowInstance);
 
 export default function MainCanvas() {
-    const [nodes, setNodes, onNodesChange] = useNodesState(JSON.parse(window.localStorage.getItem('nodes')));
+    const [nodes, , onNodesChange] = useNodesState(JSON.parse(window.localStorage.getItem('nodes')));
     const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     const onConnect = useCallback((params) => setEdges((eds) => addEdge(params, eds)), []);
 
     useEffect(() => {
