@@ -3,8 +3,13 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { nodes } from './canvas/node-locations';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+if (!window.localStorage.getItem('nodes')) {
+  window.localStorage.setItem('nodes', JSON.stringify(nodes));
+}
+
 root.render(
   <React.StrictMode>
     <App />
